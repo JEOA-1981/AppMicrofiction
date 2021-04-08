@@ -22,7 +22,7 @@ def carga(archivo):
     datos = pd.read_csv('Datos/' + archivo, index_col= 0)
     return datos
 
-@st.cache(persist= True, suppress_st_warning= True, allow_output_mutation=True, ignore_hash=True)
+@st.cache(persist= True, suppress_st_warning= True, allow_output_mutation=True)
 def carga_modelo_tareas():
     modelo = spacy.load('es_core_news_sm')
     return modelo
