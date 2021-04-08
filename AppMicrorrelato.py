@@ -28,7 +28,7 @@ def carga_modelo_tareas():
     return modelo
     
 #@st.cache(persist= True, suppress_st_warning= True, allow_output_mutation=True)
-@st.cache(hash_funcs={spacy.lang.es.Spanish: lambda _: None})
+#@st.cache(hash_funcs={spacy.lang.es.Spanish: lambda _: None})
 def carga_modelo_clasificacion():
     modelo = spacy.load('modelo_bow')
     return modelo
