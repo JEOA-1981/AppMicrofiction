@@ -239,7 +239,7 @@ def sistema_clasificacion():
     st.sidebar.markdown('Cataloga el texto introducido según un modelo de clasificación multiclase')
     st.info('Escribe o copia y pega un fragmento de texto, y presiona Cmd y Enter/Ctrl y Enter para obtener la clasificación')
     texto = st.text_area(label= 'Introduce un texto aquí:')
-    #doc = nlp_es_clasificacion(texto)
+    doc = nlp_es_clasificacion(texto)
     if round(doc.cats['noticia']) > 0:
         st.info('Noticia')
     elif round(doc.cats['microficción']) > 0:
