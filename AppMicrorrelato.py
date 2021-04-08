@@ -33,8 +33,8 @@ def carga_modelo_clasificacion():
     modelo = spacy.load('modelo_bow')
     return modelo
 
-nlp_es_tareas = carga_modelo_tareas()
-nlp_es_clasificacion = carga_modelo_clasificacion()
+#nlp_es_tareas = carga_modelo_tareas()
+#nlp_es_clasificacion = carga_modelo_clasificacion()
 
 def main():
     st.title('Caso de estudio: microficciones en *Twitter*')
@@ -171,6 +171,8 @@ def eda():
                         st.pyplot(fig)
 
 def procesamiento():
+    nlp_es_tareas = carga_modelo_tareas()
+    
     with st.beta_expander(label= 'Descripción de la sección', expanded= True):
         st.subheader('En esta sección, el usuario puede revisar algunas de las aplicaciones elementales del procesamiento de lenguaje natural.')
         
@@ -229,6 +231,8 @@ def procesamiento():
         st.write(HTML_WRAPPER.format(html), unsafe_allow_html= True)
 
 def sistema_clasificacion():
+    nlp_es_clasificacion = carga_modelo_clasificacion()
+    
     st.markdown('En esta sección, puedes obtener información sobre la posible catalogación de un texto, según sea una microficción, una noticia o una reflexión')
     explicacion = """La clasificación de textos se realizó "entrenando" un modelo de clasificación multiclase, esto es, una tipología basada en más de dos etiquetas (a diferencia de un modelo binario)
                     mutuamente excluyentes. En este caso, se clasificaron los *tweets* como "microficción", de "Noticia", o de "Frase/reflexión".
