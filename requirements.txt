@@ -1,0 +1,7 @@
+spacy==2.3.5
+streamlit==0.78.0
+texthero==1.0.9
+matplotlib==3.3.4
+pandas==1.2.3
+numpy==1.19.2
+ipython==7.22.0
