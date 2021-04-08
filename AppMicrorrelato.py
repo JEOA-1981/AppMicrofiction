@@ -10,6 +10,7 @@ import pandas as pd
 import numpy as np
 import texthero as hero
 import spacy
+import spacy_streamlit
 import matplotlib.pyplot as plt
 from spacy import displacy
 
@@ -26,14 +27,20 @@ def carga(archivo):
 def carga_modelo_tareas():
     modelo = spacy.load('es_core_news_sm')
     return modelo
-
+    
 @st.cache(persist= True, suppress_st_warning= True, allow_output_mutation=True)
 def carga_modelo_clasificacion():
     modelo = spacy.load('modelo_bow')
     return modelo
 
-nlp_es_tareas = carga_modelo_tareas()
+@st.cache(persist= True, suppress_st_warning= True, allow_output_mutation=True)
+def carga_modelos():
+    modelos = ['es_core_news_sm', 'modelo_bow']
+    return modelos
+
+#nlp_es_tareas = carga_modelo_tareas()
 #nlp_es_clasificacion = carga_modelo_clasificacion()
+nlp_es_tareas = carga_modelos()[0]
 
 def main():
     st.title('Caso de estudio: microficciones en *Twitter*')
