@@ -22,18 +22,18 @@ def carga(archivo):
     datos = pd.read_csv('Datos/' + archivo, index_col= 0)
     return datos
 
-@st.cache(persist= True, suppress_st_warning= True, allow_output_mutation=True)
+@st.cache(persist= True, suppress_st_warning= True, allow_output_mutation=True, ignore_hash=True)
 def carga_modelo_tareas():
     modelo = spacy.load('es_core_news_sm')
     return modelo
     
-@st.cache(persist= True, suppress_st_warning= True, allow_output_mutation=True)
+@st.cache(persist= True, suppress_st_warning= True, allow_output_mutation=True, ignore_hash=True)
 def carga_modelo_clasificacion():
     modelo = spacy.load('modelo_bow')
     return modelo
 
 nlp_es_tareas = carga_modelo_tareas()
-#nlp_es_clasificacion = carga_modelo_clasificacion()
+nlp_es_clasificacion = carga_modelo_clasificacion()
 
 def main():
     st.title('Caso de estudio: microficciones en *Twitter*')
