@@ -32,7 +32,7 @@ def carga_modelo_clasificacion():
     modelo = spacy.load('modelo_bow')
     return modelo
 
-nlp_es_tareas = carga_modelo_tareas()
+#nlp_es_tareas = carga_modelo_tareas()
 nlp_es_clasificacion = carga_modelo_clasificacion()
 
 def main():
@@ -197,7 +197,7 @@ def procesamiento():
     with st.beta_expander('Etiquetado de partes del discurso (POS tagging: Part of Speech)'):
         st.info('El etiquetado de partes del discuso (POS tagging: Part of Speech), consiste en la identificación de las funciones gramaticales que cumple cada palabra en un texto.')
         texto = st.text_area('Introduce un texto aquí y presiona Cmd y Enter/Ctrl y Enter para visualizar el etiquetado')
-        doc = nlp_es_tareas(texto)
+        doc = nlp_es_clasificacion(texto)
         for i in doc:
             st.info(i.text + ': ' + i.pos_)
         if st.button('Mostrar claves de etiquetado'):
@@ -206,14 +206,14 @@ def procesamiento():
         st.info('La similitud entre textos se "computa" mediante la identificación de semejanzas léxicas y semánticas entre frases aisladas o textos extensos.')
         texto_01 = st.text_area(label= 'Introduce el primer texto aquí:', key= 1)
         texto_02 = st.text_area(label= 'Introduce el segundo texto aquí:', key= 2)
-        doc_01 = nlp_es_tareas(texto_01)
-        doc_02 = nlp_es_tareas(texto_02)
+        doc_01 = nlp_es_clasificacion(texto_01)
+        doc_02 = nlp_es_clasificacion(texto_02)
         if st.button(label= 'Calcula la similitud entre textos'):
             st.info('El porcentaje de similitud entre ambos textos es de {:.0%}'.format(doc_01.similarity(doc_02)))
     with st.beta_expander('Visualización de dependencias sintácticas'):
         st.info('La visualización de dependencias sintácticas permite observar de manera gráfica las relaciones estructurales entre palabras, por ejemplo, la relación de determinación entre un sustantivo y un adjetivo')
         texto = st.text_area(label= 'Introduce un texto aquí y presiona Cmd y Enter/Ctrl y Enter para ejecutar la visualización', key= 3)
-        doc = nlp_es_tareas(texto)
+        doc = nlp_es_clasificacion(texto)
         #if st.button(label= 'Generar visualización', key= 1):
         html = displacy.render(doc, style= 'dep')
         html = html.replace('\n\n', '\n')
@@ -221,7 +221,7 @@ def procesamiento():
     with st.beta_expander('Visualización de entidades nombradas (NER)'):
         st.info('La visualización de entidades nombradas consiste en el reconocimiento de palabras que se refieren a objetos o sujetos reales, lo que posibilita corroborar, teóricamente, el nivel de factibilidad de un texto, mediante la exploración de referentes "reales" en un texto, tales como personajes históricos, lugares, organizaciones, etc.',)
         texto = st.text_area(label= 'Introduce un texto aquí y presiona Cmd y Enter/Ctrl y Enter para realizar la visualización', key= 4)
-        doc = nlp_es_tareas(texto)
+        doc = nlp_es_clasificacion(texto)
         #if st.button(label= 'Generar visualización', key= 2):
         html = displacy.render(doc, style= 'ent')
         html = html.replace('\n\n', '\n')
