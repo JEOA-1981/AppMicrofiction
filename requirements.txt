@@ -1,6 +1,6 @@
 numpy==1.19.2
 pandas==1.2.3
-streamlit==0.78.0
+streamlit
 spacy==2.3.5
 texthero==1.0.9
 matplotlib==3.3.4
