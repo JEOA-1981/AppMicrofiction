@@ -242,7 +242,7 @@ def sistema_clasificacion():
     if round(doc.cats['noticia']) > 0:
         st.info('Noticia')
     elif round(doc.cats['microficción']) > 0:
-        st.info('Micfroficción')
+        st.info('Microficción')
     elif round(doc.cats['frase']) > 0:
         st.info('Frase/reflexión')
     else:
